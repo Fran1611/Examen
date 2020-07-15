@@ -3,11 +3,11 @@ namespace Library
 {
     public class Ocean : Landscape
     {
-        public Ocean (int capacity)
+        public Ocean (string name, int capacity, int position) : base(name,capacity,position)
         {
-            this.Capacity = capacity;
         }
-        public override void AssignPoints()
+        public int Points{get;set;}
+        public override void AssignPointsToPlayers()
         {
             foreach(Player player in this.players)
             {

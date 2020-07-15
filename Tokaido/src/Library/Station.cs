@@ -5,22 +5,34 @@ namespace Library
     public abstract class Station
     {
 
-        public Station(string nameStation,int capacity, int points, List<Coin> coins)
+        private int position;
+        public Station(string nameStation,int capacity, int position)
         {
             Capacity = capacity;
-            Coins = coins;
-            StationPoints = points;
             NameStation = nameStation;
+            Position = position;
         }
 
         public string NameStation{get;set;}
         public int Capacity {get;set;}
-        public int StationPoints{get;set;}
-        public List<Coin> Coins{get;set;}
         public List<Player> Players = new List<Player>();
         public List<Player> PlayersWithPoint = new List<Player>();
         
-
+        public int Position
+        {
+            get
+            {
+                return position;
+            }
+            
+            set
+            {
+                if (value>0)
+                {
+                    position = value;                    
+                }
+            }
+        }
         // Ingreso de jugador a la estación.
         public void EnterPlayer(Player player)
         {

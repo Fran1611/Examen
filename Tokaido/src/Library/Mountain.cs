@@ -3,13 +3,11 @@ namespace Library
 {
     public class Mountain : Landscape
     {
-        public Mountain(int capacity)
+        public Mountain(string name, int capacity, int position) : base(name,capacity,position)
         {
-            this.Capacity = capacity;
         }
 
-        
-        public override void AssignPoints()
+        public override void AssignPointsToPlayers()
         {  
             foreach(Player player in this.players)
             {

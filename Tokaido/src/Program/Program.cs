@@ -7,61 +7,61 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            Mountain mountainOne = new Mountain(2);
-            Mountain mountainTwo = new Mountain(1);
+            Mountain mountainOne = new Mountain("Los Andes",2,0);
+            Mountain mountainTwo = new Mountain("Everest",1,1);
 
-            Ocean oceanOne = new Ocean(3);
-            Ocean oceanTwo = new Ocean(4);
-            Ocean oceanThree = new Ocean(1);
+            Ocean oceanOne = new Ocean("Atlantico",3,0);
+            Ocean oceanTwo = new Ocean("Pacifico",4,1);
+            Ocean oceanThree = new Ocean("Indico",1,2);
 
-            Station stationOne = new Station(TypeOfStation.ThermalWater,2,3,null);
             Coin coin1 = new Coin(TypeOfCoin.SimpleCoin);
             Coin coin2 = new Coin(TypeOfCoin.SimpleCoin);
             Coin coin3 = new Coin(TypeOfCoin.SimpleCoin);
             List<Coin> coinsList = new List<Coin>{coin1,coin2,coin3};
-            Station stationTwo = new Station(TypeOfStation.Farm,3,0,coinsList);
+            FarmStation granja = new FarmStation("La Joaquina",3,3,coinsList);
+            ThermalWaterStation dayman = new ThermalWaterStation("Termas del Dayman,",4,4,2);
 
-            Traveler fran = new Traveler("Fran");
+            TravelerOne fran = new TravelerOne("Fran");
 
-            mountainOne.AddPlayer(fran);
-            mountainOne.AssignPoints();
-            fran.GoOutLandscapeOrStation(mountainOne);
+            mountainOne.EnterPlayer(fran);
+            mountainOne.AssignPointsToPlayers();
+            mountainOne.ExitPlayer(fran);
             Console.WriteLine(fran.Score);
             //Console.WriteLine(fran.Coins.Count);
 
-            mountainTwo.AddPlayer(fran);
-            mountainTwo.AssignPoints();
-            fran.GoOutLandscapeOrStation(mountainTwo);
+            mountainTwo.EnterPlayer(fran);
+            mountainTwo.AssignPointsToPlayers();
+            mountainTwo.ExitPlayer(fran);
             Console.WriteLine(fran.Score);
             //Console.WriteLine(fran.Coins.Count);
 
-            oceanOne.AddPlayer(fran);
-            oceanOne.AssignPoints();
-            fran.GoOutLandscapeOrStation(oceanOne);
+            oceanOne.EnterPlayer(fran);
+            oceanOne.AssignPointsToPlayers();
+            oceanOne.ExitPlayer(fran);
             Console.WriteLine(fran.Score);
             //Console.WriteLine(fran.Coins.Count);
 
-            oceanTwo.AddPlayer(fran);
-            oceanTwo.AssignPoints();
-            fran.GoOutLandscapeOrStation(oceanTwo);
+            oceanTwo.EnterPlayer(fran);
+            oceanTwo.AssignPointsToPlayers();
+            oceanTwo.ExitPlayer(fran);
             Console.WriteLine(fran.Score);
             //Console.WriteLine(fran.Coins.Count);
 
-            oceanThree.AddPlayer(fran);
-            oceanThree.AssignPoints();
-            fran.GoOutLandscapeOrStation(oceanThree);
+            oceanThree.EnterPlayer(fran);
+            oceanThree.AssignPointsToPlayers();
+            oceanThree.ExitPlayer(fran);
             Console.WriteLine(fran.Score);
             //Console.WriteLine(fran.Coins.Count);
 
-            stationOne.AddPlayer(fran);
-            stationOne.AssingPointsAndCoins();
-            fran.GoOutLandscapeOrStation(stationOne);
+            granja.EnterPlayer(fran);
+            granja.AssingPointsAndCoinsToPlayer();
+            granja.ExitPlayer(fran);
             Console.WriteLine(fran.Score);
             //Console.WriteLine(fran.Coins.Count);
 
-            stationTwo.AddPlayer(fran);
-            stationTwo.AssingPointsAndCoins();
-            fran.GoOutLandscapeOrStation(stationTwo);
+            dayman.EnterPlayer(fran);
+            dayman.AssingPointsAndCoinsToPlayer();
+            dayman.ExitPlayer(fran);
             Console.WriteLine(fran.Score);
             Console.WriteLine("Coins" + fran.Coins.Count);
 

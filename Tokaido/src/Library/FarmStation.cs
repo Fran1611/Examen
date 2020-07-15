@@ -4,11 +4,12 @@ namespace Library
     public class FarmStation : Station
     {
 
-        public FarmStation (string nameStation,int capacity, int points, List<Coin> coins) : base(nameStation,capacity,points,coins)
+        public FarmStation (string nameStation,int capacity, int position, List<Coin> coins) : base(nameStation,capacity, position)
         {
+            StationCoins = coins;
         }
         
-
+        public List<Coin> StationCoins{get;set;}
         public override void AssingPointsAndCoinsToPlayer()
         {
             foreach (Player player in this.Players)
@@ -16,10 +17,10 @@ namespace Library
                 if (!(this.PlayersWithPoint.Contains(player)))
                 {
                     this.PlayersWithPoint.Add(player);
-                    player.Score += (this.StationPoints);
-                    if (this.Coins != null)
+                    
+                    if (this.StationCoins != null)
                     { 
-                        player.AddCoins(this.Coins);
+                        player.AddCoins(this.StationCoins);
                     }
                 }
             }  
