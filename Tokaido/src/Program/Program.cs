@@ -20,6 +20,20 @@ namespace Program
 
             SingleTraveler fran = new SingleTraveler("Fran");
 
+            fran.AddObserver(mountainOne);
+            fran.AddObserver(mountainTwo);
+            fran.AddObserver(oceanOne);
+            fran.AddObserver(oceanTwo);
+            fran.AddObserver(oceanThree);
+
+            fran.TravelerMove(1);
+            Console.WriteLine(mountainOne.Travelers[0].Name);
+            fran.TravelerMove(2);
+            Console.WriteLine(mountainTwo.Travelers[0].Name);
+            Console.WriteLine(mountainOne.Travelers.Count);
+            //fran.TravelerMove(1);
+            //Console.WriteLine(mountainOne.Travelers[0].Name);
+
            /* mountainOne.EnterPlayer(fran);
             mountainOne.AssignPointsToTravelers();
             mountainOne.ExitPlayer(fran);

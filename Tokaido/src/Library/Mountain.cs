@@ -7,7 +7,7 @@ namespace Library
         {
         }
 
-        public override void AssignPointsToTravelers()
+        public override void AssignPoints()
         {
             foreach(Traveler traveler in this.Travelers)
             {
@@ -18,7 +18,6 @@ namespace Library
                     traveler.OceansVisited += 1;
                 }
             }
-        }
-        
+        }  
     }
 }

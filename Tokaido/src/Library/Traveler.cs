@@ -12,7 +12,8 @@ namespace Library
         o recoja más monedas que otro tipo de jugador, se podria crear 
 
     */
-    public abstract class Traveler
+    public abstract class Traveler : IObservable
+
     {
         private int position = 0;
         private int score = 0;
@@ -97,11 +98,32 @@ namespace Library
             }
         }
 
-        public virtual bool TravelerMove(int newPosition)
+        private List<IObserver> observers = new List<IObserver>();
+
+        public void AddObserver(IObserver observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void DeleteObserver(IObserver observer)
+        {
+            observers.Remove(observer);
+        }
+
+        public void Notify()
+        {
+            foreach(IObserver observer in observers)
+            {
+                observer.Update(this);
+            }
+        }
+
+        public bool TravelerMove(int newPosition)
         {
             if(newPosition > this.Position)
             {
                 this.Position = newPosition;
+                this.Notify();
                 return true;
             }
             else return false;

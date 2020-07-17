@@ -10,7 +10,8 @@ namespace Library
         }
         
         public int Coins{get;set;}
-        public override void AssingPointsAndCoinsToTravelers()
+
+        public override void AssignPoints()
         {
             foreach (Traveler traveler in this.Travelers)
             {
@@ -25,5 +26,10 @@ namespace Library
                 }
             }  
         }
+
+       /* public override void AssingPointsAndCoinsToTravelers()
+        {
+            
+        }*/
     }
 }

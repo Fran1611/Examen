@@ -7,13 +7,13 @@ namespace Library
         {
         }
         public int Points{get;set;}
-        public override void AssignPointsToTravelers()
-        {  
+
+        public override void AssignPoints()
+        {
             foreach(Traveler traveler in this.Travelers)
             {
                 if (!(this.TravelersWithPoint.Contains(traveler)))
                 {
-                    
                     traveler.Score = (traveler.Score + (traveler.MontainsVisited*2) + 1);
                     this.TravelersWithPoint.Add(traveler);
                     traveler.MontainsVisited += 1;

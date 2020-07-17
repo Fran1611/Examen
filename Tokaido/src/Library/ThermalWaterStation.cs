@@ -9,7 +9,7 @@ namespace Library
         }   
         
         public int Points {get;set;}
-        public override void AssingPointsAndCoinsToTravelers()
+        public override void AssignPoints()
         {
             foreach (Traveler traveler in this.Travelers)
             {
