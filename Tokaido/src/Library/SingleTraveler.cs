@@ -9,9 +9,9 @@ namespace Library
 
 
     */
-    public class TravelerOne : Player
+    public class SingleTraveler : Traveler
     {
-        public TravelerOne(string name): base(name)
+        public SingleTraveler(string name): base(name)
         {
             Name = name;
         }

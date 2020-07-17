@@ -7,15 +7,16 @@ namespace Library
         {
         }
         public int Points{get;set;}
-        public override void AssignPointsToPlayers()
-        {
-            foreach(Player player in this.players)
+        public override void AssignPointsToTravelers()
+        {  
+            foreach(Traveler traveler in this.Travelers)
             {
-                if (!(this.PlayersWithPoint.Contains(player)))
+                if (!(this.TravelersWithPoint.Contains(traveler)))
                 {
-                    player.Score = player.Score + 1;
-                    this.PlayersWithPoint.Add(player);
-                    player.OceansVisited +=1;
+                    
+                    traveler.Score = (traveler.Score + (traveler.MontainsVisited*2) + 1);
+                    this.TravelersWithPoint.Add(traveler);
+                    traveler.MontainsVisited += 1;
                 }
             }
         }

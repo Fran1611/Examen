@@ -12,21 +12,34 @@ namespace Library
         o recoja más monedas que otro tipo de jugador, se podria crear 
 
     */
-    public abstract class Player
+    public abstract class Traveler
     {
         private int position = 0;
         private int score = 0;
         private int oceansVisited = 0;
         private int montainsVisited = 0;
-        private List<Coin> coins = new List<Coin>();
+        private int coins = 0;
 
-        public Player(string name)
+        public Traveler(string name)
         {
             Name = name;
         }
 
         public string Name {get;set;}
-        public List<Coin> Coins{get {return coins;}}
+        public int Coins
+        {
+            get 
+            {
+                return coins;
+            }
+            set
+            {
+                if (value>0)
+                {
+                    coins = value;                    
+                }
+            }
+        }
         public int Position
         {
             get 
@@ -84,10 +97,14 @@ namespace Library
             }
         }
 
-        public void AddCoins(List<Coin> coins)
+        public virtual bool TravelerMove(int newPosition)
         {
-            foreach(Coin coin in coins)
-            this.Coins.Add(coin);
-        }     
+            if(newPosition > this.Position)
+            {
+                this.Position = newPosition;
+                return true;
+            }
+            else return false;
+        }   
     }
 }

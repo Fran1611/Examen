@@ -5,51 +5,55 @@ namespace Library
     public abstract class Station
     {
 
-        private int position;
-        public Station(string nameStation,int capacity, int position)
+        public Station(string name,int capacity, int position)
         {
             Capacity = capacity;
-            NameStation = nameStation;
+            Name = name;
             Position = position;
         }
 
-        public string NameStation{get;set;}
+        public string Name{get;set;}
         public int Capacity {get;set;}
-        public List<Player> Players = new List<Player>();
-        public List<Player> PlayersWithPoint = new List<Player>();
+        private List<Traveler> travelers = new List<Traveler>();
+        private List<Traveler> travelersWithPoint = new List<Traveler>();
         
-        public int Position
+        public List<Traveler> Travelers
         {
-            get
-            {
-                return position;
-            }
-            
-            set
-            {
-                if (value>0)
-                {
-                    position = value;                    
-                }
-            }
+            get{return travelers;}
+            //set{travelers = value;}
         }
-        // Ingreso de jugador a la estación.
-        public void EnterPlayer(Player player)
+        public List<Traveler> TravelersWithPoint
         {
-            if (Players.Count < Capacity)
+            get{return travelersWithPoint;}
+            //set{travelersWithPoint = value;}
+        }
+        public int Position{get;set;}
+
+
+        
+        // Ingreso de jugador a la estación.
+        public virtual bool EnterTraveler(Traveler traveler)
+        {
+            if(traveler.TravelerMove(this.Position))
             {
-                this.Players.Add(player);
+                if (Travelers.Count < Capacity)
+                {
+                    this.Travelers.Add(traveler);
+                    return true;
+                }
+                else return false;
             }
+            else return false;
         }
 
         // Salida de Jugador de la estación.
-        public void ExitPlayer(Player player)
+        public virtual void ExitTraveler(Traveler player)
         {
-            this.Players.Remove(player);
-            this.PlayersWithPoint.Remove(player);
+            this.Travelers.Remove(player);
+            this.TravelersWithPoint.Remove(player);
         }
 
         // Asignar puntos y monedas a jugadores en la estación.
-        public abstract void AssingPointsAndCoinsToPlayer();       
+        public abstract void AssingPointsAndCoinsToTravelers();       
     }
 }

@@ -3,20 +3,20 @@ namespace Library
 {
     public class ThermalWaterStation : Station
     {
-        public ThermalWaterStation (string nameStation,int capacity, int position, int points) : base(nameStation,capacity,position)
+        public ThermalWaterStation (string name,int capacity, int position, int points) : base(name,capacity,position)
         {
-            StationPoints = points;
+            Points = points;
         }   
         
-        public int StationPoints {get;set;}
-        public override void AssingPointsAndCoinsToPlayer()
+        public int Points {get;set;}
+        public override void AssingPointsAndCoinsToTravelers()
         {
-            foreach (Player player in this.Players)
+            foreach (Traveler traveler in this.Travelers)
             {
-                if (!(this.PlayersWithPoint.Contains(player)))
+                if (!(this.TravelersWithPoint.Contains(traveler)))
                 {
-                    this.PlayersWithPoint.Add(player);
-                    player.Score += (this.StationPoints);
+                    this.TravelersWithPoint.Add(traveler);
+                    traveler.Score += (this.Points);
                 }
             }  
         }

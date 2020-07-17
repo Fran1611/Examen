@@ -4,23 +4,23 @@ namespace Library
     public class FarmStation : Station
     {
 
-        public FarmStation (string nameStation,int capacity, int position, List<Coin> coins) : base(nameStation,capacity, position)
+        public FarmStation (string name,int capacity, int position, int coins) : base(name,capacity, position)
         {
-            StationCoins = coins;
+            Coins = coins;
         }
         
-        public List<Coin> StationCoins{get;set;}
-        public override void AssingPointsAndCoinsToPlayer()
+        public int Coins{get;set;}
+        public override void AssingPointsAndCoinsToTravelers()
         {
-            foreach (Player player in this.Players)
+            foreach (Traveler traveler in this.Travelers)
             {
-                if (!(this.PlayersWithPoint.Contains(player)))
+                if (!(this.TravelersWithPoint.Contains(traveler)))
                 {
-                    this.PlayersWithPoint.Add(player);
+                    this.TravelersWithPoint.Add(traveler);
                     
-                    if (this.StationCoins != null)
+                    if (this.Coins != 0)
                     { 
-                        player.AddCoins(this.StationCoins);
+                        traveler.Coins += this.Coins;
                     }
                 }
             }  
