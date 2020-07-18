@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace Library
 {
-    public abstract class Experience
+    public abstract class Experience : IObserver
     {
         public Experience(string name, int capacity, int position)
         {
@@ -38,16 +38,15 @@ namespace Library
             else return false;
         }
 
-        public abstract void AssignPoints();
-
+        
         // Salida de Jugador de la estación.
-        public abstract void ExitTraveler(Traveler player);
+        //public abstract void ExitTraveler(Traveler player);
 
         // Se recibe la notificación de que un jugador cambio de posición.
         // Si la nueva posicion del jugador es la misma que la de la estación
         // el personaje entra en la estación
-        public void Update(IObservable observable)
-        {
+        public abstract void Update(IObservable observable);
+       /* {
             if((observable as Traveler).Position == this.Position)
             {
                 this.EnterTraveler(observable as Traveler);
@@ -56,6 +55,6 @@ namespace Library
             {
                 this.ExitTraveler(observable as Traveler);
             }
-        }
+        }*/
     }
 }

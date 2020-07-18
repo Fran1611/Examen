@@ -18,6 +18,8 @@ namespace Program
             FarmStation granja = new FarmStation("La Joaquina",3,6,3);
             ThermalWaterStation dayman = new ThermalWaterStation("Termas del Dayman,",4,7,3);
 
+            EndPosition fin = new EndPosition("Fin",1,8);
+
             SingleTraveler fran = new SingleTraveler("Fran");
 
             fran.AddObserver(mountainOne);
@@ -25,57 +27,19 @@ namespace Program
             fran.AddObserver(oceanOne);
             fran.AddObserver(oceanTwo);
             fran.AddObserver(oceanThree);
+            fran.AddObserver(fin);
 
             fran.TravelerMove(1);
             Console.WriteLine(mountainOne.Travelers[0].Name);
             fran.TravelerMove(2);
             Console.WriteLine(mountainTwo.Travelers[0].Name);
             Console.WriteLine(mountainOne.Travelers.Count);
-            //fran.TravelerMove(1);
-            //Console.WriteLine(mountainOne.Travelers[0].Name);
 
-           /* mountainOne.EnterPlayer(fran);
-            mountainOne.AssignPointsToTravelers();
-            mountainOne.ExitPlayer(fran);
-            Console.WriteLine(fran.Score);
-            //Console.WriteLine(fran.Coins.Count);
+            fran.TravelerMove(8);
 
-            mountainTwo.EnterPlayer(fran);
-            mountainTwo.AssignPointsToTravelers();
-            mountainTwo.ExitPlayer(fran);
-            Console.WriteLine(fran.Score);
-            //Console.WriteLine(fran.Coins.Count);
-
-            oceanOne.EnterPlayer(fran);
-            oceanOne.AssignPointsToTravelers();
-            oceanOne.ExitPlayer(fran);
-            Console.WriteLine(fran.Score);
-            //Console.WriteLine(fran.Coins.Count);
-
-            oceanTwo.EnterPlayer(fran);
-            oceanTwo.AssignPointsToTravelers();
-            oceanTwo.ExitPlayer(fran);
-            Console.WriteLine(fran.Score);
-            //Console.WriteLine(fran.Coins.Count);
-
-            oceanThree.EnterPlayer(fran);
-            oceanThree.AssignPointsToTravelers();
-            oceanThree.ExitPlayer(fran);
-            Console.WriteLine(fran.Score);
-            //Console.WriteLine(fran.Coins.Count);
-
-            granja.EnterPlayer(fran);
-            granja.AssingPointsAndCoinsToTravelers();
-            granja.ExitPlayer(fran);
-            Console.WriteLine(fran.Score);
-            //Console.WriteLine(fran.Coins.Count);
-
-            dayman.EnterPlayer(fran);
-            dayman.AssingPointsAndCoinsToTravelers();
-            dayman.ExitPlayer(fran);
-            Console.WriteLine(fran.Score);
-            Console.WriteLine("Coins" + fran.Coins);*/
-
+            List<Traveler> winners = fin.WinningTraveler();
+            Console.WriteLine(winners[0].Name);
+            
 
 
 

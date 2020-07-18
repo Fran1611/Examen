@@ -12,10 +12,23 @@ namespace Library
         {
             get{return travelersWithPoint;}
         }
-        public override void ExitTraveler(Traveler player)
+        public void ExitTraveler(Traveler player)
         {
             this.Travelers.Remove(player);
             this.TravelersWithPoint.Remove(player);
+        }
+
+        public abstract void AssignPoints();
+        public override void Update(IObservable observable)
+        {
+            if((observable as Traveler).Position == this.Position)
+            {
+                this.EnterTraveler(observable as Traveler);
+            }
+            else if (this.Travelers.Contains(observable as Traveler))
+            {
+                this.ExitTraveler(observable as Traveler);
+            }
         }
     }
 }
