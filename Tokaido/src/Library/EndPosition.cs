@@ -3,9 +3,22 @@ namespace Library
 {
     public class EndPosition : Experience
     {
-        public EndPosition(string name, int capacity, int position) : base (name,capacity,position)
+        private EndPosition(string name, int capacity, int position) : base (name,capacity,position)
         {
 
+        }
+
+        private static EndPosition instance = null;  
+
+        public static EndPosition Instance(string name, int capacity, int position)
+        {   
+            if (instance == null)  
+            {  
+                instance = new EndPosition(name,capacity,position);     
+            }  
+            
+            return instance;  
+            
         }
 
         public override void Update(IObservable observable)

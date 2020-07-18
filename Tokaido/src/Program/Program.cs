@@ -18,11 +18,13 @@ namespace Program
             FarmStation granja = new FarmStation("La Joaquina",3,6,3);
             ThermalWaterStation dayman = new ThermalWaterStation("Termas del Dayman,",4,7,3);
 
-            EndPosition fin = new EndPosition("Fin",1,8);
+            EndPosition fin =  EndPosition.Instance("Fin",1,8);
+
+            EndPosition fin2 = EndPosition.Instance("fin222",2,0);
 
             SingleTraveler fran = new SingleTraveler("Fran");
 
-            fran.AddObserver(mountainOne);
+            /*fran.AddObserver(mountainOne);
             fran.AddObserver(mountainTwo);
             fran.AddObserver(oceanOne);
             fran.AddObserver(oceanTwo);
@@ -38,7 +40,12 @@ namespace Program
             fran.TravelerMove(8);
 
             List<Traveler> winners = fin.WinningTraveler();
-            Console.WriteLine(winners[0].Name);
+            Console.WriteLine(winners[0].Name);*/
+
+            Console.WriteLine(fin.Name);
+            Console.WriteLine(fin2.Name);
+
+
             
 
 
