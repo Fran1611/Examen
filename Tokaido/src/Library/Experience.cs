@@ -3,6 +3,7 @@ namespace Library
 {
     public abstract class Experience : IObserver
     {
+        private int position;
         public Experience(string name, int capacity, int position)
         {
             Capacity = capacity;
@@ -25,7 +26,18 @@ namespace Library
             get{return travelersWithPoint;}
             //set{travelersWithPoint = value;}
         }*/
-        public int Position{get;set;}
+        public int Position
+        {
+            get {return position;}
+            
+            set
+            {
+                if (value>0)
+                {
+                    position = value;
+                }
+            }
+        }
 
         // Ingreso de jugador a la estación.
         public virtual bool EnterTraveler(Traveler traveler)
@@ -38,23 +50,8 @@ namespace Library
             else return false;
         }
 
-        
-        // Salida de Jugador de la estación.
-        //public abstract void ExitTraveler(Traveler player);
-
         // Se recibe la notificación de que un jugador cambio de posición.
-        // Si la nueva posicion del jugador es la misma que la de la estación
-        // el personaje entra en la estación
         public abstract void Update(IObservable observable);
-       /* {
-            if((observable as Traveler).Position == this.Position)
-            {
-                this.EnterTraveler(observable as Traveler);
-            }
-            else if (this.Travelers.Contains(observable as Traveler))
-            {
-                this.ExitTraveler(observable as Traveler);
-            }
-        }*/
+      
     }
 }

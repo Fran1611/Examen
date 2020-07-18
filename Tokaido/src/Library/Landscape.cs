@@ -24,8 +24,9 @@ namespace Library
             if((observable as Traveler).Position == this.Position)
             {
                 this.EnterTraveler(observable as Traveler);
+                AssignPoints();
             }
-            else if (this.Travelers.Contains(observable as Traveler))
+            if (this.Travelers.Contains(observable as Traveler))
             {
                 this.ExitTraveler(observable as Traveler);
             }

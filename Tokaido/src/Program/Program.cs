@@ -7,46 +7,51 @@ namespace Program
     {
         static void Main(string[] args)
         {
+            // Experiencias.
             Mountain mountainOne = new Mountain("Los Andes",2,1);
             Mountain mountainTwo = new Mountain("Everest",1,2);
-
             Ocean oceanOne = new Ocean("Atlantico",3,3);
             Ocean oceanTwo = new Ocean("Pacifico",4,4);
-            Ocean oceanThree = new Ocean("Indico",1,5);
+            FarmStation farm = new FarmStation("La Joaquina",3,5,3);
+            ThermalWaterStation dayman = new ThermalWaterStation("Termas del Dayman,",4,6,3);
 
-            
-            FarmStation granja = new FarmStation("La Joaquina",3,6,3);
-            ThermalWaterStation dayman = new ThermalWaterStation("Termas del Dayman,",4,7,3);
-
-            EndPosition fin =  EndPosition.Instance("Fin",1,8);
-
-            EndPosition fin2 = EndPosition.Instance("fin222",2,0);
-
+            // Viajeros.
             SingleTraveler fran = new SingleTraveler("Fran");
+            SingleTraveler juan =  new SingleTraveler("Juan");
 
-            /*fran.AddObserver(mountainOne);
-            fran.AddObserver(mountainTwo);
-            fran.AddObserver(oceanOne);
-            fran.AddObserver(oceanTwo);
-            fran.AddObserver(oceanThree);
-            fran.AddObserver(fin);
+            List<Traveler> winners = new List<Traveler>();
+
+            // El Camino.
+            Road road = new Road();
+            road.AddExperience(mountainOne);
+            road.AddExperience(mountainTwo);
+            road.AddExperience(oceanOne);
+            road.AddExperience(oceanTwo);
+            road.AddExperience(farm);
+            road.AddExperience(dayman);
+
+            road.AddTravelers(fran);
+            road.AddTravelers(juan);
+            road.FinalPositionOfRoad();
+            road.LoadObservers();
+            
 
             fran.TravelerMove(1);
-            Console.WriteLine(mountainOne.Travelers[0].Name);
+            juan.TravelerMove(2);
             fran.TravelerMove(2);
-            Console.WriteLine(mountainTwo.Travelers[0].Name);
-            Console.WriteLine(mountainOne.Travelers.Count);
-
-            fran.TravelerMove(8);
-
-            List<Traveler> winners = fin.WinningTraveler();
-            Console.WriteLine(winners[0].Name);*/
-
-            Console.WriteLine(fin.Name);
-            Console.WriteLine(fin2.Name);
-
-
+            juan.TravelerMove(3);
+            fran.TravelerMove(5);
+            juan.TravelerMove(6);
+            fran.TravelerMove(7);
+            juan.TravelerMove(7);
             
+            winners = road.Winners();
+            foreach(Traveler traveler in winners)
+            {
+                Console.WriteLine(traveler.Name);
+            }
+
+
 
 
 

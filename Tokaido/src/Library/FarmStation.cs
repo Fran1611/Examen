@@ -26,10 +26,5 @@ namespace Library
                 }
             }  
         }
-
-       /* public override void AssingPointsAndCoinsToTravelers()
-        {
-            
-        }*/
     }
 }
