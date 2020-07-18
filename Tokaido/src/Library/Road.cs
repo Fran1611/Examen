@@ -8,9 +8,9 @@ namespace Library
         private List<Traveler> travelers = new List<Traveler>();
         private readonly List<Experience> experiences = new List<Experience>();
         private EndPosition final;
-        private List<Traveler> winners;
+        //private List<Traveler> winners;
+        public List<Traveler> Winners {get;private set;}
 
-        private bool playGame = true;
 
         // Se agrega una nueva experiencia al Camino. Se pueden agregar todas las experiencias que se deseen.
         public void AddExperience(Experience experience)
@@ -59,16 +59,12 @@ namespace Library
         }
         // Método que ejecuta el juego mientras playGame sea true.
         // Cuando playGame sea false, el juego termina y se retorna los ganadores
-        public List<Traveler> Winners()
-        {
-            winners = final.WinningTraveler();
-            return winners;
-        }
+
 
         // Cuando la experiencia EndPosition notifica a Road, el Juego debe terminar.
         public void Update(IObservable observable)
         {
-            Winners();
+            this.Winners = (observable as EndPosition).WinningTraveler();
         }
     }
 }

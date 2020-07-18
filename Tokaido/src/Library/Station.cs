@@ -15,10 +15,10 @@ namespace Library
         public abstract void AssignPoints();
         
         // Salida de Jugador de la estación.
-        public void ExitTraveler(Traveler player)
+        public void ExitTraveler(Traveler traveler)
         {
-            this.Travelers.Remove(player);
-            this.TravelersWithPoint.Remove(player);
+            this.Travelers.Remove(traveler);
+            this.TravelersWithPoint.Remove(traveler);
         }
         public override void Update(IObservable observable)
         {

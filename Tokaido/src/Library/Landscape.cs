@@ -12,10 +12,10 @@ namespace Library
         {
             get{return travelersWithPoint;}
         }
-        public void ExitTraveler(Traveler player)
+        public void ExitTraveler(Traveler traveler)
         {
-            this.Travelers.Remove(player);
-            this.TravelersWithPoint.Remove(player);
+            this.Travelers.Remove(traveler);
+            this.TravelersWithPoint.Remove(traveler);
         }
 
         public abstract void AssignPoints();

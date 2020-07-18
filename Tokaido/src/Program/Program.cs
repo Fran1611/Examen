@@ -45,7 +45,7 @@ namespace Program
             fran.TravelerMove(7);
             juan.TravelerMove(7);
             
-            winners = road.Winners();
+            winners = road.Winners;
             foreach(Traveler traveler in winners)
             {
                 Console.WriteLine(traveler.Name);

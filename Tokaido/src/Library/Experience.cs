@@ -14,18 +14,12 @@ namespace Library
         public string Name{get;set;}
         public int Capacity {get;set;}
         private List<Traveler> travelers = new List<Traveler>();
-        //private List<Traveler> travelersWithPoint = new List<Traveler>();
         
         public List<Traveler> Travelers
         {
             get{return travelers;}
-            //set{travelers = value;}
         }
-        /*public List<Traveler> TravelersWithPoint
-        {
-            get{return travelersWithPoint;}
-            //set{travelersWithPoint = value;}
-        }*/
+        
         public int Position
         {
             get {return position;}
