@@ -12,7 +12,7 @@ namespace Library
         o recoja más monedas que otro tipo de jugador, se podria crear 
 
     */
-    public abstract class Traveler : IObservable
+    public abstract class Traveler
 
     {
         private int position = 0;
@@ -98,21 +98,21 @@ namespace Library
             }
         }
 
-        private List<IObserver> observers = new List<IObserver>();
+        private List<Experience> observers = new List<Experience>();
 
-        public void AddObserver(IObserver observer)
+        public void AddObserver(Experience observer)
         {
             observers.Add(observer);
         }
 
-        public void DeleteObserver(IObserver observer)
+        public void DeleteObserver(Experience observer)
         {
             observers.Remove(observer);
         }
 
         public void Notify()
         {
-            foreach(IObserver observer in observers)
+            foreach(Experience observer in observers)
             {
                 observer.Update(this);
             }

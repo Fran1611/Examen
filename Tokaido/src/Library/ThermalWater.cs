@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 namespace Library
 {
-    public class ThermalWaterStation : Station
+    public class ThermalWater : Station
     {
-        public ThermalWaterStation (string name,int capacity, int position, int points) : base(name,capacity,position)
+        public ThermalWater (string name,int capacity, int position, int points) : base(name,capacity,position)
         {
             Points = points;
         }   
@@ -16,7 +16,7 @@ namespace Library
                 if (!(this.TravelersWithPoint.Contains(traveler)))
                 {
                     this.TravelersWithPoint.Add(traveler);
-                    traveler.Score += (this.Points);
+                    traveler.Score += this.Points;
                 }
             }  
         }

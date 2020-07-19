@@ -3,11 +3,16 @@ using System;
 
 namespace Library
 {
-    public class Road : IObserver
+    public class Road
     {
         private List<Traveler> travelers = new List<Traveler>();
-        private readonly List<Experience> experiences = new List<Experience>();
+        private List<Experience> experiences = new List<Experience>();
+
+        public List<Experience> Experiences{get{return experiences;}}
+        public List<Traveler> Travelers{get{return travelers;}}
         private EndPosition final;
+
+        public EndPosition Final {get{return final;}}
         //private List<Traveler> winners;
         public List<Traveler> Winners {get;private set;}
 
@@ -53,7 +58,7 @@ namespace Library
             {
                 foreach(Experience experience in experiences)
                 {
-                    traveler.AddObserver(experience as IObserver);
+                    traveler.AddObserver(experience);
                 }
             }
         }
@@ -62,9 +67,9 @@ namespace Library
 
 
         // Cuando la experiencia EndPosition notifica a Road, el Juego debe terminar.
-        public void Update(IObservable observable)
+        public void Update(EndPosition observable)
         {
-            this.Winners = (observable as EndPosition).WinningTraveler();
+            this.Winners = observable.WinningTraveler();
         }
     }
 }

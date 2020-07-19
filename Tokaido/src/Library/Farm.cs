@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 namespace Library
 {
-    public class FarmStation : Station
+    public class Farm : Station
     {
 
-        public FarmStation (string name,int capacity, int position, int coins) : base(name,capacity, position)
+        public Farm (string name,int capacity, int position, int coins) : base(name,capacity, position)
         {
             Coins = coins;
         }

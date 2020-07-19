@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace Library
 {
-    public abstract class Landscape : Experience, IObserver
+    public abstract class Landscape : Experience
     {
         public Landscape(string name, int capacity, int position) : base(name,capacity,position)
         {
@@ -19,16 +19,16 @@ namespace Library
         }
 
         public abstract void AssignPoints();
-        public override void Update(IObservable observable)
+        public override void Update(Traveler observable)
         {
-            if((observable as Traveler).Position == this.Position)
+            if(observable.Position == this.Position)
             {
-                this.EnterTraveler(observable as Traveler);
+                this.EnterTraveler(observable);
                 AssignPoints();
             }
-            if (this.Travelers.Contains(observable as Traveler))
+            else if (this.Travelers.Contains(observable))
             {
-                this.ExitTraveler(observable as Traveler);
+                this.ExitTraveler(observable);
             }
         }
     }

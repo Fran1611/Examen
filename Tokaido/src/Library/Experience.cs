@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace Library
 {
-    public abstract class Experience : IObserver
+    public abstract class Experience
     {
         private int position;
         public Experience(string name, int capacity, int position)
@@ -45,7 +45,7 @@ namespace Library
         }
 
         // Se recibe la notificación de que un jugador cambio de posición.
-        public abstract void Update(IObservable observable);
+        public abstract void Update(Traveler observable);
       
     }
 }

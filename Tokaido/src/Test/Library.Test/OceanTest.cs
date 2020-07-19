@@ -9,57 +9,49 @@ namespace Library.Test
         Ocean oceanOne;
         Ocean oceanTwo;
         Ocean oceanThree;
+
+        Road road;
+
         [SetUp]
         public void Setup()
         {
             traveler1 = new SingleTraveler("Fran");
             traveler2 = new SingleTraveler("Juan");
-            oceanOne = new Ocean("Atlantico",3,3);
-            oceanTwo = new Ocean("Pacifico",4,4);
-            oceanThree = new Ocean("Indico",1,5);
-        }
+            
+            oceanOne = new Ocean("Atlantico",3,1);
+            oceanTwo = new Ocean("Pacifico",4,2);
+            oceanThree = new Ocean("Indico",1,3);
 
+            road = new Road();
+            road.AddTravelers(traveler1);
+            road.AddTravelers(traveler2);
+            road.AddExperience(oceanOne);
+            road.AddExperience(oceanTwo);
+            road.AddExperience(oceanThree);
+            road.LoadObservers();
+
+        }
+        
         // Asignacion de puntos de paisaje Oceano con dos jugadores que ingresan en distinto momento.
         [Test]
         public void AssignPointsToTravelersTest()
         {
-            oceanOne.EnterTraveler(traveler1);
-            oceanOne.AssignPointsToTravelers();
-
-            oceanOne.EnterTraveler(traveler2);
-            oceanOne.AssignPointsToTravelers();
-
-            Assert.AreEqual(traveler1.Score,1);
-            Assert.AreEqual(traveler2.Score, 1);
-        }
-
-        [Test]
-        public void AssignPointsToTravelersTestThree()
-        {
-            oceanOne.EnterTraveler(traveler1);
-            oceanOne.EnterTraveler(traveler2);
+            traveler1.TravelerMove(1);
+            traveler2.TravelerMove(1);
             
-            oceanOne.AssignPointsToTravelers();
-
-            Assert.AreEqual(traveler1.Score,1);
+            Assert.AreEqual(traveler1.Score, 1);
             Assert.AreEqual(traveler2.Score, 1);
         }
 
+    
         // Asignacion de puntos cuando un jugador ingresa mas de una vez a un paisaje Oceano.
         [Test]
         public void AssignPointsToTravelersTestTwo()
         {
-            oceanOne.EnterTraveler(traveler1);
-            oceanOne.AssignPointsToTravelers();
-            oceanOne.ExitTraveler(traveler1);
-
-            oceanTwo.EnterTraveler(traveler1);
-            oceanTwo.AssignPointsToTravelers();
-            oceanTwo.ExitTraveler(traveler1);
-
-            oceanThree.EnterTraveler(traveler1);
-            oceanThree.AssignPointsToTravelers();
-
+            traveler1.TravelerMove(1);
+            traveler1.TravelerMove(2);
+            traveler1.TravelerMove(3);
+        
             Assert.AreEqual(9,traveler1.Score);
         }
 
@@ -67,44 +59,50 @@ namespace Library.Test
         [Test]
         public void EnterTravelerTest()
         {
-            oceanTwo.EnterTraveler(traveler1);
-            oceanOne.EnterTraveler(traveler1);
+            traveler1.TravelerMove(2);
+            traveler1.TravelerMove(1);
 
-            bool expectedOne = oceanTwo.Travelers.Contains(traveler1);
-            bool expectedTwo = oceanOne.Travelers.Contains(traveler1);
+            bool expected = oceanOne.Travelers.Contains(traveler1);
 
-            Assert.AreEqual(expectedOne,true);
-            Assert.AreEqual(expectedTwo,false);
+            Assert.AreEqual(expected,false);
         }
 
         // Prueba que un jugador puede entrar a cualquier paisaje Oceano que se encuentra despues.
         [Test]
         public void EnterTravelerTestTwo()
         {
-            oceanTwo.EnterTraveler(traveler2);
-            oceanThree.EnterTraveler(traveler2);
+            traveler1.TravelerMove(1);
+            traveler1.TravelerMove(3);
 
-            bool expectedOne = oceanTwo.Travelers.Contains(traveler2);
-            bool expectedTwo = oceanThree.Travelers.Contains(traveler2);
+            bool expected = oceanThree.Travelers.Contains(traveler1);
 
-            Assert.AreEqual(true,expectedOne);
-            Assert.AreEqual(true,expectedTwo);
+            Assert.AreEqual(true,expected);
         }
 
         // Prueba que si el paisaje Oceano está completo no puede entrar otro jugador.
         [Test]
         public void EnterTravelerTestThree()
         {
-            bool expectedOne = oceanThree.EnterTraveler(traveler1);
-            bool expectedTwo = oceanThree.EnterTraveler(traveler2);
+            traveler1.TravelerMove(3);
+            traveler2.TravelerMove(3);
 
-            bool expectedThree = oceanThree.Travelers.Contains(traveler1);
-            bool expectedFour = oceanThree.Travelers.Contains(traveler2);
+            bool expected = oceanThree.Travelers.Contains(traveler1);
+            bool expectedTwo = oceanThree.Travelers.Contains(traveler2);
 
-            Assert.AreEqual(true,expectedOne);
+            Assert.AreEqual(true,expected);
             Assert.AreEqual(false,expectedTwo);
-            Assert.AreEqual(true,expectedThree);
-            Assert.AreEqual(false,expectedFour);
+        }
+        // Prueba que cuando Viajero se mueve a otro Paisaje, es eliminado del Paisaje en el que estaba
+        [Test]
+        public void DeleteTraveler()
+        {
+            traveler1.TravelerMove(1);
+            bool expected = oceanOne.Travelers.Contains(traveler1);
+            traveler1.TravelerMove(2);
+            bool expectedTwo = oceanOne.Travelers.Contains(traveler1);
+
+            Assert.AreEqual(true,expected);
+            Assert.AreEqual(false,expectedTwo);
         }
     }
 }

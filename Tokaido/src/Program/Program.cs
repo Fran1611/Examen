@@ -12,12 +12,13 @@ namespace Program
             Mountain mountainTwo = new Mountain("Everest",1,2);
             Ocean oceanOne = new Ocean("Atlantico",3,3);
             Ocean oceanTwo = new Ocean("Pacifico",4,4);
-            FarmStation farm = new FarmStation("La Joaquina",3,5,3);
-            ThermalWaterStation dayman = new ThermalWaterStation("Termas del Dayman,",4,6,3);
+            Farm farm = new Farm("La Joaquina",3,5,3);
+            ThermalWater dayman = new ThermalWater("Termas del Dayman,",4,6,3);
 
             // Viajeros.
             SingleTraveler fran = new SingleTraveler("Fran");
             SingleTraveler juan =  new SingleTraveler("Juan");
+            SingleTraveler pedro = new SingleTraveler("Pedro");
 
             List<Traveler> winners = new List<Traveler>();
 
@@ -32,6 +33,7 @@ namespace Program
 
             road.AddTravelers(fran);
             road.AddTravelers(juan);
+            road.AddTravelers(pedro);
             road.FinalPositionOfRoad();
             road.LoadObservers();
             
@@ -44,11 +46,20 @@ namespace Program
             juan.TravelerMove(6);
             fran.TravelerMove(7);
             juan.TravelerMove(7);
+            pedro.TravelerMove(1);
+            pedro.TravelerMove(2);
+            pedro.TravelerMove(3);
+            pedro.TravelerMove(4);
+            pedro.TravelerMove(5);
+            pedro.TravelerMove(6);
+            pedro.TravelerMove(7);
             
             winners = road.Winners;
+            Console.WriteLine($"Puntajes finales: {fran.Score}, {juan.Score}, {pedro.Score}");
+
             foreach(Traveler traveler in winners)
             {
-                Console.WriteLine(traveler.Name);
+                Console.WriteLine($" el ganador es {traveler.Name} con {traveler.Score} puntos");
             }
 
 

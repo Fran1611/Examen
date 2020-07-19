@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace Library
 {
-    public class EndPosition : Experience, IObservable
+    public class EndPosition : Experience
     {
         private EndPosition(string name, int capacity, int position) : base (name,capacity,position)
         {
@@ -21,19 +21,18 @@ namespace Library
             
         }
 
-        public override void Update(IObservable observable)
+        public override void Update(Traveler observable)
         {
-            if((observable as Traveler).Position == this.Position)
+            if(observable.Position == this.Position)
             {
                 if (this.Capacity > this.Travelers.Count)
                 {
-                    EnterTraveler(observable as Traveler);
+                    EnterTraveler(observable);
                     if (this.Capacity == this.Travelers.Count)
                     {
                         Notify();
                     }
                 }
-                
             }
         }
 
@@ -58,23 +57,16 @@ namespace Library
             return winners;
         }
 
-        private List<IObserver> observers = new List<IObserver>();
-        public void AddObserver(IObserver observer)
+        private Road observers;
+        public void AddObserver(Road observer)
         {
-            observers.Add(observer);
+            observers = observer;
         }
 
-        public void DeleteObserver(IObserver observer)
-        {
-            observers.Remove(observer);
-        }
 
         public void Notify()
         {
-            foreach(IObserver observer in observers)
-            {
-                observer.Update(this);
-            }
+            observers.Update(this); 
         }
     }
 }
