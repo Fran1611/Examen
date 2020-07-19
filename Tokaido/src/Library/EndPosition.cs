@@ -67,7 +67,7 @@ namespace Library
                     
                     if (this.Capacity == this.Travelers.Count)
                     {
-                        WinningTraveler();
+                        WinnerTravelers();
                     }
                 }
             }
@@ -76,7 +76,7 @@ namespace Library
         /// <summary>
         /// Método para determinar quién o quienes son los ganadores.
         /// </summary>
-        public void WinningTraveler()
+        public void WinnerTravelers()
         {   
             int maxScore = 0;
 

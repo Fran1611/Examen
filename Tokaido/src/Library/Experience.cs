@@ -74,7 +74,7 @@ namespace Library
         /// </summary>
         /// <param name="traveler"></param>
         /// <returns> retora true si el viajero ingresó y false en caso contrario</returns>
-        public virtual bool EnterTraveler(Traveler traveler)
+        public bool EnterTraveler(Traveler traveler)
         { 
             if (Travelers.Count < Capacity)
             {

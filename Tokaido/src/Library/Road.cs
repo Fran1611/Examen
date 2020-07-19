@@ -58,7 +58,7 @@ namespace Library
         /// <param name="experience"> Experiencia a agregar</param>
         public void AddExperience(Experience experience)
         {
-            experiences.Add(experience);
+            Experiences.Add(experience);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Library
         {
             if(travelers.Count < 6)
             {
-                travelers.Add(traveler);
+                Travelers.Add(traveler);
             }
         }
 
@@ -79,7 +79,7 @@ namespace Library
         public void FinalPositionOfRoad()
         {
             int maxPosition = 0;
-            foreach(Experience experience in experiences)
+            foreach(Experience experience in Experiences)
             {
                 if(experience.Position > maxPosition)
                 {
