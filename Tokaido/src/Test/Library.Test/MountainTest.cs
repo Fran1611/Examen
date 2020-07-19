@@ -9,9 +9,9 @@ namespace Library.Test
         SingleTraveler traveler2;
 
         Road road;
-        Mountain mountainOne;
-        Mountain mountainTwo;
-        Mountain mountainThree;
+        MountainLandscape mountainOne;
+        MountainLandscape mountainTwo;
+        MountainLandscape mountainThree;
 
         [SetUp]
         public void Setup()
@@ -19,9 +19,9 @@ namespace Library.Test
             traveler1 = new SingleTraveler("Fran");
             traveler2 = new SingleTraveler("Juan");
             
-            mountainOne = new Mountain("Everest",2,1);
-            mountainTwo = new Mountain("Los Andes",1,2);
-            mountainThree = new Mountain("Himalaya",3,3);
+            mountainOne = new MountainLandscape("Everest",2,1);
+            mountainTwo = new MountainLandscape("Los Andes",1,2);
+            mountainThree = new MountainLandscape("Himalaya",3,3);
 
             road = new Road();
             road.AddTravelers(traveler1);
@@ -32,7 +32,9 @@ namespace Library.Test
             road.LoadObservers();
         }
 
-        // Asignacion de puntos de paisaje Montaña mas de un jugador.
+        /// <summary>
+        /// Test que verifica la asignacion de puntos de paisaje Montaña.
+        /// </summary>
         [Test]
         public void AssignPointsToTravelersTest()
         {
@@ -43,7 +45,9 @@ namespace Library.Test
             Assert.AreEqual(traveler2.Score, 1);
         }
         
-        // Asignacion de puntos cuando un jugador ingresa mas de una vez a un paisaje Montaña.
+        /// <summary>
+        /// Test que verifica la asignacion de puntos cuando un Viajero ingresa mas de una vez a un paisaje Montaña.
+        /// </summary>
         [Test]
         public void AssignPointsToTravelersTestTwo()
         {
@@ -54,7 +58,9 @@ namespace Library.Test
             Assert.AreEqual(6,traveler1.Score);
         }
 
-        // Prueba que un jugador no puede entrar a un paisaje Montaña anterior.
+        /// <summary>
+        /// Test que verifica que un Viajero no puede entrar a un paisaje Montaña anterior.
+        /// </summary>
         [Test]
         public void EnterTravelerTest()
         {
@@ -67,7 +73,9 @@ namespace Library.Test
             Assert.AreEqual(expectedTwo,false);
         }
 
-        // Prueba que un jugador puede entrar a cualquier paisaje Montaña que se encuentra despues.
+        /// <summary>
+        /// Test que verifica que un Viajero puede entrar a cualquier paisaje Montaña que se encuentra despues.
+        /// </summary>
         [Test]
         public void EnterTravelerTestTwo()
         {
@@ -78,9 +86,9 @@ namespace Library.Test
             Assert.AreEqual(true,expected);
         }
 
-
-
-        // Prueba que si el paisaje Montaña está completo no puede entrar otro jugador.
+        /// <summary>
+        /// Test que verifica que si el paisaje Montaña está completo no puede entrar otro Viajero.
+        /// </summary>
         [Test]
         public void EnterTravelerTestThree()
         {
@@ -93,7 +101,9 @@ namespace Library.Test
             Assert.AreEqual(false,expectedTwo);
         }
 
-        // Prueba que cuando Viajero se mueve a otro Paisaje, es eliminado del Paisaje en el que estaba
+        /// <summary>
+        /// Test que verifica que cuando Viajero se mueve a otro Paisaje, es eliminado del Paisaje en el que estaba
+        /// </summary>
         [Test]
         public void DeleteTraveler()
         {

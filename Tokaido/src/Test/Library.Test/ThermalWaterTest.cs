@@ -30,7 +30,9 @@ namespace Library.Test
             road.LoadObservers();
         }
 
-        // Prueba que la asignación de puntos es correcta.
+        /// <summary>
+        /// Test que verifica la asignación de puntos.
+        /// </summary>
         [Test]
         public void AssignPointsToTravelersTest()
         {
@@ -41,7 +43,9 @@ namespace Library.Test
             Assert.AreEqual(traveler2.Score, 2);
         }
 
-        // Asignacion de puntos cuando un viajero entra a varias aguas termales.
+        /// <summary>
+        /// Test que verifica la asignación de puntos cuando un Viajero pasa por varias Aguas Termales.
+        /// </summary>
         [Test]
         public void FarmAssignPointsTwo()
         {
@@ -52,7 +56,9 @@ namespace Library.Test
             Assert.AreEqual(traveler1.Score, 9);
         }
 
-        // Prueba que un viajero no puede entrar una parada anterior.
+        /// <summary>
+        /// Test que verifica que un Viajero no puede entrar a un Agua Termal anterior.
+        /// </summary>
         [Test]
         public void EnterTravelerTest()
         {
@@ -65,7 +71,9 @@ namespace Library.Test
             Assert.AreEqual(expectedTwo,false);
         }
 
-        // Prueba que un jugador puede entrar a cualquier Farm que se encuentra despues.
+        /// <summary>
+        ///  Test que verifica que un Viajero puede entrar a cualquier Agua Termal que se encuentra despues.
+        /// </summary>        
         [Test]
         public void EnterTravelerTestTwo()
         {
@@ -76,7 +84,9 @@ namespace Library.Test
             Assert.AreEqual(true,expected);
         }
 
-        // Prueba que si el Farm está completo no puede entrar otro jugador.
+        /// <summary>
+        /// Test que verifica que si el Agua Termal está completa no puede entrar otro Viajero.
+        /// </summary>
         [Test]
         public void EnterTravelerTestThree()
         {
@@ -89,7 +99,9 @@ namespace Library.Test
             Assert.AreEqual(false,expectedTwo);
         }
 
-        // Prueba que cuando Viajero se mueve a otro Farm, es eliminado del que estaba anteriormente
+        /// <summary>
+        /// Test que verifica que cuando Viajero se mueve a otra Agua Termal, es eliminado del que estaba anteriormente 
+        /// </summary>
         [Test]
         public void DeleteTraveler()
         {

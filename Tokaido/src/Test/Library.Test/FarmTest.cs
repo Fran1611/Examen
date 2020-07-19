@@ -33,7 +33,9 @@ namespace Library.Test
             road.LoadObservers();
         }
 
-        // Asignacion de puntos de Farm con mas de un jugador.
+        /// <summary>
+        /// Test que verifica la asignación de monedas.
+        /// </summary>
         [Test]
         public void AssignPointsToTravelersTest()
         {
@@ -44,7 +46,9 @@ namespace Library.Test
             Assert.AreEqual(traveler2.Coins, 3);
         }
 
-        // Asignacion de puntos cuando un viajero entra a varias granjas.
+        /// <summary>
+        /// Test que verifica la asignación de puntos cuando un Viajero pasa por varias Granjas.
+        /// </summary>
         [Test]
         public void FarmAssignPointsTwo()
         {
@@ -55,7 +59,9 @@ namespace Library.Test
             Assert.AreEqual(traveler1.Coins, 9);
         }
 
-        // Prueba que un viajero no puede entrar a un Farm anterior.
+        /// <summary>
+        /// Test que verifica que un Viajero no puede entrar a una Granja anterior.
+        /// </summary>
         [Test]
         public void EnterTravelerTest()
         {
@@ -68,7 +74,9 @@ namespace Library.Test
             Assert.AreEqual(expectedTwo,false);
         }
 
-        // Prueba que un jugador puede entrar a cualquier Farm que se encuentra despues.
+        /// <summary>
+        ///  Test que verifica que un Viajero puede entrar a cualquier Farm que se encuentra despues.
+        /// </summary>
         [Test]
         public void EnterTravelerTestTwo()
         {
@@ -79,7 +87,9 @@ namespace Library.Test
             Assert.AreEqual(true,expected);
         }
 
-        // Prueba que si el Farm está completo no puede entrar otro jugador.
+        /// <summary>
+        /// Test que verifica que si la Granja está completa no puede entrar otro Viajero.
+        /// </summary>
         [Test]
         public void EnterTravelerTestThree()
         {
@@ -92,7 +102,9 @@ namespace Library.Test
             Assert.AreEqual(false,expectedTwo);
         }
 
-        // Prueba que cuando Viajero se mueve a otro Farm, es eliminado del que estaba anteriormente
+        /// <summary>
+        /// Test que verifica que cuando Viajero se mueve a otro Farm, es eliminado del que estaba anteriormente 
+        /// </summary>
         [Test]
         public void DeleteTraveler()
         {

@@ -6,9 +6,9 @@ namespace Library.Test
     {
         SingleTraveler traveler1;
         SingleTraveler traveler2;
-        Ocean oceanOne;
-        Ocean oceanTwo;
-        Ocean oceanThree;
+        OceanLandscape oceanOne;
+        OceanLandscape oceanTwo;
+        OceanLandscape oceanThree;
 
         Road road;
 
@@ -18,9 +18,9 @@ namespace Library.Test
             traveler1 = new SingleTraveler("Fran");
             traveler2 = new SingleTraveler("Juan");
             
-            oceanOne = new Ocean("Atlantico",3,1);
-            oceanTwo = new Ocean("Pacifico",4,2);
-            oceanThree = new Ocean("Indico",1,3);
+            oceanOne = new OceanLandscape("Atlantico",3,1);
+            oceanTwo = new OceanLandscape("Pacifico",4,2);
+            oceanThree = new OceanLandscape("Indico",1,3);
 
             road = new Road();
             road.AddTravelers(traveler1);
@@ -32,7 +32,9 @@ namespace Library.Test
 
         }
         
-        // Asignacion de puntos de paisaje Oceano con dos jugadores que ingresan en distinto momento.
+        /// <summary>
+        /// Test que verifica la asignacion de puntos de paisaje Oceano.
+        /// </summary>
         [Test]
         public void AssignPointsToTravelersTest()
         {
@@ -44,7 +46,9 @@ namespace Library.Test
         }
 
     
-        // Asignacion de puntos cuando un jugador ingresa mas de una vez a un paisaje Oceano.
+        /// <summary>
+        /// Test que verifica la asignacion de puntos cuando un Viajero ingresa mas de una vez a un paisaje Oceano.
+        /// </summary>
         [Test]
         public void AssignPointsToTravelersTestTwo()
         {
@@ -55,7 +59,9 @@ namespace Library.Test
             Assert.AreEqual(9,traveler1.Score);
         }
 
-        // Prueba que un jugador no puede entrar a un paisaje Oceano anterior.
+        /// <summary>
+        /// Test que verifica que un Viajero no puede entrar a un paisaje Oceano anterior.
+        /// </summary>
         [Test]
         public void EnterTravelerTest()
         {
@@ -67,7 +73,9 @@ namespace Library.Test
             Assert.AreEqual(expected,false);
         }
 
-        // Prueba que un jugador puede entrar a cualquier paisaje Oceano que se encuentra despues.
+        /// <summary>
+        /// Test que verifica que un Viajero puede entrar a cualquier paisaje Oceano que se encuentra despues.
+        /// </summary>
         [Test]
         public void EnterTravelerTestTwo()
         {
@@ -79,7 +87,9 @@ namespace Library.Test
             Assert.AreEqual(true,expected);
         }
 
-        // Prueba que si el paisaje Oceano está completo no puede entrar otro jugador.
+        /// <summary>
+        /// Test que verifica que si el paisaje Oceano está completo no puede entrar otro Viajero.
+        /// </summary>
         [Test]
         public void EnterTravelerTestThree()
         {
@@ -92,7 +102,10 @@ namespace Library.Test
             Assert.AreEqual(true,expected);
             Assert.AreEqual(false,expectedTwo);
         }
-        // Prueba que cuando Viajero se mueve a otro Paisaje, es eliminado del Paisaje en el que estaba
+
+        /// <summary>
+        /// Test que verifica que cuando Viajero se mueve a otro Paisaje, es eliminado del Paisaje en el que estaba
+        /// </summary>
         [Test]
         public void DeleteTraveler()
         {

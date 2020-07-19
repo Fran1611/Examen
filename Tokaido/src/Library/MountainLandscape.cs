@@ -1,38 +1,43 @@
+
 using System.Collections.Generic;
+
 namespace Library
 {
-    public class Farm : Experience
+    /*
+        La clase MountainLandscape es un subtipo de Experience. Por lo tanto presenta las mismas
+        propiedades y métodos definidos en la superclase.
+        Gracias a que Update es polimórfica MountainLandscape define Update según sus necesidades.
+        Tomando como base el patrón Observer, MountainLandscape es un observador. El método Update
+        recibira una actualización cuando un Viajero cambie su posición.
+        Por expert, se asigna la responsabilidad expulsar Viajeros, asi como también
+        asignar puntos a los Viajeros, debido a que la clase conoce a los Viajeros que ingresaron.
+    */
+    public class MountainLandscape : Experience
     {
-
-        public Farm (string name,int capacity, int position, int coins) : base(name,capacity, position)
+        public MountainLandscape(string name, int capacity, int position) : base(name,capacity,position)
         {
-            Coins = coins;
         }
 
         /// <summary>
-        /// Propiedad que retorna y setea las monedas.
-        /// </summary>
-        /// <value></value>
-        public int Coins{get;set;}
-
-        /// <summary>
-        /// Lista de Viajeros que ya se les asignaron las monedas.
+        /// Lista de Viajeros que ya se les asignó los puntos de la Experiencia.
         /// </summary>
         /// <typeparam name="Traveler"></typeparam>
         /// <returns></returns>
         private List<Traveler> travelersWithPoint = new List<Traveler>();
-        
+
         /// <summary>
-        /// Propiedad que retorna la lista de viajeros a los que ya se le asingó las monedas.
+        /// Propiedad que retorna la lista de Viajeros con asignación de puntos.
         /// </summary>
         /// <value></value>
-        public List<Traveler> TravelersWithPoint {get{return travelersWithPoint;}}
+        public List<Traveler> TravelersWithPoint
+        {
+            get{return travelersWithPoint;}
+        }
 
-        
         /// <summary>
-        /// Método para expulsar a un Viajero de la Experiencia.
+        /// Método para expulsar a un viajero de la Experiencia.
         /// </summary>
-        /// <param name="traveler"> Recibe un Viajero por parametro</param>
+        /// <param name="traveler"></param>
         public void ExitTraveler(Traveler traveler)
         {
             this.Travelers.Remove(traveler);
@@ -57,24 +62,21 @@ namespace Library
                 this.ExitTraveler(observable);
             }
         }
-      
+
         /// <summary>
-        /// Método que asigna las moneas a los viajeros que están en la Experiencia.
+        /// Método que asigna los puntos a los viajeros que están en la Experiencia.
         /// </summary>
         public void AssignPoints()
         {
-            foreach (Traveler traveler in this.Travelers)
+            foreach(Traveler traveler in this.Travelers)
             {
                 if (!(this.TravelersWithPoint.Contains(traveler)))
                 {
+                    traveler.Score += traveler.OceansVisited + 1;
                     this.TravelersWithPoint.Add(traveler);
-                    
-                    if (this.Coins != 0)
-                    { 
-                        traveler.Coins += this.Coins;
-                    }
+                    traveler.OceansVisited += 1;
                 }
-            }  
-        }
+            }
+        }  
     }
 }
