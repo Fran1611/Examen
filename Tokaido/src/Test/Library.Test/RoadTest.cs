@@ -69,31 +69,5 @@ namespace Library.Test
 
             Assert.AreEqual(actual,actualTwo);
         }
-
-        /// <summary>
-        /// Test que verifica que cuando Road se actualiza obtiene de EndPosition la lista de ganadores.
-        /// </summary>
-        [Test]
-        public void UpdateTest()
-        {
-            traveler1.TravelerMove(1);
-            traveler1.TravelerMove(3);
-            traveler1.TravelerMove(5);
-
-            traveler2.TravelerMove(1);
-            traveler2.TravelerMove(3);
-            traveler2.TravelerMove(5);
-
-            Traveler winOne = roadOne.Final.Winners[0];
-            Traveler winTwo = roadOne.Final.Winners[1];
-
-            Assert.AreEqual(traveler1.Name,winOne.Name);
-            Assert.AreEqual(traveler1.Position,winOne.Position);
-            Assert.AreEqual(traveler1.Score,winOne.Score);
-
-            Assert.AreEqual(traveler2.Name,winTwo.Name);
-            Assert.AreEqual(traveler2.Position,winTwo.Position);
-            Assert.AreEqual(traveler2.Score,winTwo.Score);
-        }
     }
 }
