@@ -13,10 +13,12 @@ namespace Library
         como conoce las experiencias del camino conoce entonces cual es la ultima experiencia y agrega
         a esa lista de experiencias el final del camino.
         Road utiliza DIP, porque no depende de cada tipo de Viajero ni de cada Tipo de Experience, sino que
-        depende de las abstracciones de éstas, es decir de Experience y Traveler.
+        depende de las abstracciones de éstas, es decir de Experience y Traveler. 
+        Cumple con LCHC, porque no depende de los subtipos de Experience y Traveler, 
+        es decir que no tiene más dependencias de las necesarias.
         Cumple con OCP, ya que para crear por más que se creen nuevos tipos de Experiencias y de Viajeros
         no es necesario modificar el código de ésta clase.
-
+        
 
     */
     public class Road
