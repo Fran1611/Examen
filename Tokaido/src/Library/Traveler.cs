@@ -14,6 +14,9 @@ namespace Library
         Cuando se mueva notificará a los observadores.
         Debido a que los observadores son siempre de tipo Experience, no se implementaron las interfaces
         IObserver y IObservable.
+        Cumple con OCP, ya que para crear distintos tipos de Viajeros no es necesario modificar
+        el codigo existente, simplemente debe crearse una nueva clase que herede Traveler
+        y definir los nuevos métodos y/o propiedades.
 
     */
     public abstract class Traveler

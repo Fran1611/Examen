@@ -3,6 +3,14 @@ namespace Library
 {
     public class ThermalWater : Experience
     {
+        /*  La clase ThermalWater es un subtipo de Experience. Por lo tanto presenta las mismas
+            propiedades y métodos definidos en la superclase.
+            Gracias a que Update es polimórfica ThermalWater define Update según sus necesidades.
+            Tomando como base el patrón Observer, ThermalWater es un observador. El método Update
+            recibira una actualización cuando un Viajero cambie su posición.
+            Por expert, se asigna la responsabilidad expulsar Viajeros, asi como también
+            asignar puntos a los Viajeros, debido a que la clase conoce a los Viajeros que ingresaron.
+        */
         public ThermalWater (string name,int capacity, int position, int points) : base(name,capacity,position)
         {
             Points = points;

@@ -10,6 +10,9 @@ namespace Library
         lo implementara de manera distinta. Por lo tanto es una operacion Polimórfica.
         Por Expert se asigna la resposablidad a Experience de agregar Viajeros a la experiencia, ya que
         Experience es experta en la capacidad de Viajeros.
+        Cumple con OCP, ya que para crear distintos tipos de Experiencias no es necesario modificar
+        el codigo existente, simplemente debe crearse una nueva clase que herede Experience
+        y definir sus propios metodos de asignar puntos y Update.
     */
     public abstract class Experience
     {

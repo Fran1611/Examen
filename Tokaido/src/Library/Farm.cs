@@ -3,7 +3,14 @@ namespace Library
 {
     public class Farm : Experience
     {
-
+        /*  La clase Farm es un subtipo de Experience. Por lo tanto presenta las mismas
+            propiedades y métodos definidos en la superclase.
+            Gracias a que Update es polimórfica Farm define Update según sus necesidades.
+            Tomando como base el patrón Observer, Farm es un observador. El método Update
+            recibira una actualización cuando un Viajero cambie su posición.
+            Por expert, se asigna la responsabilidad expulsar Viajeros, asi como también
+            asignar puntos a los Viajeros, debido a que la clase conoce a los Viajeros que ingresaron.
+        */
         public Farm (string name,int capacity, int position, int coins) : base(name,capacity, position)
         {
             Coins = coins;

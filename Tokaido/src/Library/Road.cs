@@ -14,6 +14,8 @@ namespace Library
         a esa lista de experiencias el final del camino.
         Road utiliza DIP, porque no depende de cada tipo de Viajero ni de cada Tipo de Experience, sino que
         depende de las abstracciones de éstas, es decir de Experience y Traveler.
+        Cumple con OCP, ya que para crear por más que se creen nuevos tipos de Experiencias y de Viajeros
+        no es necesario modificar el código de ésta clase.
 
 
     */
