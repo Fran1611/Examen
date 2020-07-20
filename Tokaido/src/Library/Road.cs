@@ -6,7 +6,7 @@ namespace Library
     /*
         La clase Road es la encargada de armar el camino.
         Road conoce la lista de Viajeros y la lista de Experiencias.
-        Por expert, se asigna la responsabilidad de agregar Experiencias y Viajeros, 
+        Por Expert, se asigna la responsabilidad de agregar Experiencias y Viajeros, 
         así como también la responsabilidad de agregar a cada Viajero los Observadores (Experiencias), 
         ya que Road debe conoce quienes son los Viajeros y las Experiencias.
         Road utliza también Creator, se le asigna la responsabilidad de crear el final del camino,
